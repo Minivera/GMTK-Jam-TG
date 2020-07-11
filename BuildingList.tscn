@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://BuildingList.gd" type="Script" id=1]
+[ext_resource path="res://assets/headquarters.PNG" type="Texture" id=2]
+
+[node name="BuildingList" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/vseparation = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Headquarters" type="TextureButton" parent="GridContainer"]
+margin_right = 89.0
+margin_bottom = 91.0
+texture_normal = ExtResource( 2 )
+
+[node name="Headquarters2" type="TextureButton" parent="GridContainer"]
+margin_top = 103.0
+margin_right = 89.0
+margin_bottom = 194.0
+texture_normal = ExtResource( 2 )
+[connection signal="button_down" from="GridContainer/Headquarters" to="." method="_on_Headquarters_button_down"]
