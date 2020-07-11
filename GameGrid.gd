@@ -5,8 +5,6 @@ extends Node2D
 const rows = 15
 const cols = 5
 
-const cell_size = 96
-const margin_size = 12
 const scroll_speed = 2
 
 onready var globals = get_node("/root/Globals")
@@ -23,6 +21,9 @@ onready var Building = preload("res://Building.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var cell_size = globals.cell_size
+	var margin_size = globals.margin_size
+	
 	for i in range(rows):
 		for j in range(cols):
 			var building = Building.instance()
@@ -30,6 +31,7 @@ func _ready():
 				"x": cell_size * j + margin_size * j,
 				"y": cell_size * i + margin_size * i
 			}
+			building.grid_position = Vector2(j, i)
 			building.size = Vector2(cell_size, cell_size)
 			building.texture = globals.empty_texture
 			building.type = "empty"

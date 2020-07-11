@@ -3,6 +3,7 @@ extends Node2D
 
 # Declare member variables here. Examples:
 export ({}) var offset
+export (Vector2) var grid_position
 export (Vector2) var size
 export (String) var type
 export (Texture) var texture setget _set_texture

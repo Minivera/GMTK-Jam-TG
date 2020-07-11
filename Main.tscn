@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GameGrid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BuildingList.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://assets/empty.PNG" type="Texture" id=4]
 [ext_resource path="res://DraggablePosition.gd" type="Script" id=5]
+[ext_resource path="res://ShapeDict.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -13,7 +14,11 @@ script = ExtResource( 3 )
 position = Vector2( 34, 34 )
 
 [node name="BuildingList" parent="." instance=ExtResource( 2 )]
-position = Vector2( 867.848, 34 )
+position = Vector2( 588.385, 30.4324 )
+
+[node name="ShapeDict" parent="." instance=ExtResource( 6 )]
+position = Vector2( 716.733, 13.7932 )
+shape = "political_center"
 
 [node name="DraggablePosition" type="Position2D" parent="."]
 visible = false
