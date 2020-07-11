@@ -15,3 +15,9 @@ func _input(event):
 func _on_RoomsList_room_pressed(type):
 	$DraggablePosition.pickup(type)
 	globals.holding_room = type
+
+
+func _on_GameGrid_building_created(objects):
+	print("created building")
+	for obj in objects:
+		print("room in building", obj)

@@ -56,6 +56,17 @@ func get_building(label):
 			return building
 	return null;
 
+func get_building_makeup(building):
+	var elements = []
+	
+	for shape in building["shapes"]:
+		for row in shape:
+			for column in row:
+				if column != null and !elements.has(column):
+					elements.append(column)
+	
+	return elements
+
 func get_texture_by_type(type):
 	if type == "headquarters":
 		return headquarters_texture
