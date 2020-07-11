@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GameGrid.tscn" type="PackedScene" id=1]
-[ext_resource path="res://BuildingList.tscn" type="PackedScene" id=2]
+[ext_resource path="res://RoomsList.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://assets/empty.PNG" type="Texture" id=4]
 [ext_resource path="res://DraggablePosition.gd" type="Script" id=5]
@@ -13,7 +13,7 @@ script = ExtResource( 3 )
 [node name="GameGrid" parent="." instance=ExtResource( 1 )]
 position = Vector2( 34, 34 )
 
-[node name="BuildingList" parent="." instance=ExtResource( 2 )]
+[node name="RoomsList" parent="." instance=ExtResource( 2 )]
 position = Vector2( 588.385, 30.4324 )
 
 [node name="ShapeDict" parent="." instance=ExtResource( 6 )]
@@ -32,4 +32,4 @@ texture = ExtResource( 4 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DraggablePosition/DraggingArea"]
 position = Vector2( -2.59563, -2.1237 )
 polygon = PoolVector2Array( 0, 0, 5, 0, 5, 5, 0, 5 )
-[connection signal="building_pressed" from="BuildingList" to="." method="_on_BuildingList_building_pressed"]
+[connection signal="room_pressed" from="RoomsList" to="." method="_on_RoomsList_room_pressed"]

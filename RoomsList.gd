@@ -2,7 +2,7 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-signal building_pressed(type)
+signal room_pressed(type)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,16 +16,16 @@ func _ready():
 
 
 func _on_Headquarters_button_down():
-	emit_signal("building_pressed", "headquarters")
+	emit_signal("room_pressed", "headquarters")
 
 
 func _on_Energy_button_down():
-	emit_signal("building_pressed", "energy")
+	emit_signal("room_pressed", "energy")
 
 
 func _on_Bank_button_down():
-	emit_signal("building_pressed", "bank")
+	emit_signal("room_pressed", "bank")
 
 
 func _on_Restaurant_button_down():
-	emit_signal("building_pressed", "restaurant")
+	emit_signal("room_pressed", "restaurant")

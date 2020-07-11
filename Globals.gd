@@ -9,9 +9,9 @@ var energy_texture = load("res://assets/energy.PNG")
 var bank_texture = load("res://assets/cash.PNG")
 var restaurant_texture = load("res://assets/food.PNG")
 
-var holding_building = null;
+var holding_room = null;
 
-var known_multi_buildings = [
+var known_buildings = [
 	{
 		"label": "mall",
 		"name": "Mall",
@@ -50,10 +50,10 @@ var known_multi_buildings = [
 	}
 ]
 
-func get_multi_building(label):
-	for multi_building in known_multi_buildings:
-		if multi_building["label"] == label:
-			return multi_building
+func get_building(label):
+	for building in known_buildings:
+		if building["label"] == label:
+			return building
 	return null;
 
 func get_texture_by_type(type):
