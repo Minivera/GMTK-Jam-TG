@@ -5,7 +5,7 @@ extends Node2D
 const rows = 15
 const cols = 5
 
-const cell_size = 32
+const cell_size = 96
 const margin_size = 12
 const scroll_speed = 2
 
@@ -30,10 +30,10 @@ func _ready():
 				"x": cell_size * j + margin_size * j,
 				"y": cell_size * i + margin_size * i
 			}
+			building.size = Vector2(cell_size, cell_size)
 			building.texture = globals.empty_texture
 			building.type = "empty"
 			building.connect("building_entered", self, "_on_building_entered")
-			building.connect("building_exited", self, "_on_building_exited")
 			buildings.append(building)
 			$Position2D/Camera2D.add_child(building)
 	
@@ -58,10 +58,6 @@ func _physics_process(delta):
 
 func _on_building_entered(building):
 	hovered = building
-	
-
-func _on_building_exited(_building):
-	hovered = null
 
 
 func drop():
