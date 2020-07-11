@@ -17,3 +17,15 @@ func _ready():
 
 func _on_Headquarters_button_down():
 	emit_signal("building_pressed", "headquarters")
+
+
+func _on_Energy_button_down():
+	emit_signal("building_pressed", "energy")
+
+
+func _on_Bank_button_down():
+	emit_signal("building_pressed", "bank")
+
+
+func _on_Restaurant_button_down():
+	emit_signal("building_pressed", "restaurant")
