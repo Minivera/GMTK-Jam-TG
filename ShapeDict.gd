@@ -7,11 +7,11 @@ export (String) var shape
 var local_shape = null
 var shape_counter = 0
 
-onready var Building = preload("res://Building.tscn")
+onready var Room = preload("res://Room.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	local_shape = globals.get_multi_building(shape)
+	local_shape = globals.get_building(shape)
 	
 	$ShapeName.set_text(local_shape["name"])
 	$Timer.start()
@@ -38,16 +38,16 @@ func _render_shape():
 			if shape_element == null:
 				continue
 			
-			var building = Building.instance()
-			building.offset = {
+			var room = Room.instance()
+			room.offset = {
 				"x": cell_size * j + margin_size * j,
 				"y": cell_size * i + margin_size * i
 			}
-			building.grid_position = Vector2(j, i)
-			building.size = Vector2(cell_size, cell_size)
-			building.texture = globals.get_texture_by_type(shape_element)
-			building.type = shape_element
-			$ShapeContainer.add_child(building)
+			room.grid_position = Vector2(j, i)
+			room.size = Vector2(cell_size, cell_size)
+			room.texture = globals.get_texture_by_type(shape_element)
+			room.type = shape_element
+			$ShapeContainer.add_child(room)
 
 
 func _on_Timer_timeout():

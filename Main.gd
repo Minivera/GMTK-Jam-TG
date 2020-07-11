@@ -10,8 +10,8 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		$DraggablePosition.drop()
 		$GameGrid.drop()
-		globals.holding_building = null
+		globals.holding_room = null
 
-func _on_BuildingList_building_pressed(type):
+func _on_RoomsList_room_pressed(type):
 	$DraggablePosition.pickup(type)
-	globals.holding_building = type
+	globals.holding_room = type

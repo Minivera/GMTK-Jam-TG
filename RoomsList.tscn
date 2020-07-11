@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://RoomsList.gd" type="Script" id=1]
+[ext_resource path="res://assets/headquarters.PNG" type="Texture" id=2]
+[ext_resource path="res://assets/cash.PNG" type="Texture" id=3]
+[ext_resource path="res://assets/food.PNG" type="Texture" id=4]
+[ext_resource path="res://assets/energy.PNG" type="Texture" id=5]
+
+[node name="RoomsList" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/vseparation = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Headquarters" type="TextureButton" parent="GridContainer"]
+margin_right = 93.0
+margin_bottom = 91.0
+texture_normal = ExtResource( 2 )
+
+[node name="Energy" type="TextureButton" parent="GridContainer"]
+margin_top = 103.0
+margin_right = 93.0
+margin_bottom = 194.0
+texture_normal = ExtResource( 5 )
+
+[node name="Bank" type="TextureButton" parent="GridContainer"]
+margin_top = 206.0
+margin_right = 93.0
+margin_bottom = 299.0
+texture_normal = ExtResource( 3 )
+
+[node name="Restaurant" type="TextureButton" parent="GridContainer"]
+margin_top = 311.0
+margin_right = 93.0
+margin_bottom = 402.0
+texture_normal = ExtResource( 4 )
+[connection signal="button_down" from="GridContainer/Headquarters" to="." method="_on_Headquarters_button_down"]
+[connection signal="button_down" from="GridContainer/Energy" to="." method="_on_Energy_button_down"]
+[connection signal="button_down" from="GridContainer/Bank" to="." method="_on_Bank_button_down"]
+[connection signal="button_down" from="GridContainer/Restaurant" to="." method="_on_Restaurant_button_down"]
