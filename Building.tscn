@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/empty.PNG" type="Texture" id=1]
+
+[node name="Building" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 89.0
+margin_bottom = 89.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuildingSprite" type="Sprite" parent="Control"]
+texture = ExtResource( 1 )
+centered = false
