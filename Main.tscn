@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GameGrid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BuildingList.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://assets/empty.PNG" type="Texture" id=4]
 [ext_resource path="res://DraggablePosition.gd" type="Script" id=5]
-[ext_resource path="res://assets/headquarters.PNG" type="Texture" id=6]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -19,8 +18,13 @@ position = Vector2( 344, 34 )
 [node name="DraggablePosition" type="Position2D" parent="."]
 visible = false
 script = ExtResource( 5 )
-headquarters_texture = ExtResource( 6 )
 
-[node name="DraggableSprite" type="Sprite" parent="DraggablePosition"]
+[node name="DraggingArea" type="Area2D" parent="DraggablePosition"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DraggablePosition/DraggingArea"]
+position = Vector2( -44.834, -43.4182 )
+polygon = PoolVector2Array( 0, 0, 89, 0, 89, 89, 0, 89 )
+
+[node name="DraggableSprite" type="Sprite" parent="DraggablePosition/DraggingArea"]
 texture = ExtResource( 4 )
 [connection signal="building_pressed" from="BuildingList" to="." method="_on_BuildingList_building_pressed"]

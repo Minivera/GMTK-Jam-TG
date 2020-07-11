@@ -9,14 +9,17 @@ const cell_size = 32
 const margin_size = 12
 const scroll_speed = 2
 
+onready var globals = get_node("/root/Globals")
+
 var max_scroll
 var motion = Vector2()
 const still = Vector2(0, 0)
 
 # Keep a reference to all the buildings
 var buildings = []
+var hovered = null
 
-export (PackedScene) var Building
+onready var Building = preload("res://Building.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +30,10 @@ func _ready():
 				"x": cell_size * j + margin_size * j,
 				"y": cell_size * i + margin_size * i
 			}
+			building.texture = globals.empty_texture
+			building.type = "empty"
+			building.connect("building_entered", self, "_on_building_entered")
+			building.connect("building_exited", self, "_on_building_exited")
 			buildings.append(building)
 			$Position2D/Camera2D.add_child(building)
 	
@@ -47,3 +54,18 @@ func _physics_process(delta):
 	if motion.abs() != still:
 		$Position2D.translate(-motion * speed)
 		motion = still
+
+
+func _on_building_entered(building):
+	hovered = building
+	
+
+func _on_building_exited(_building):
+	hovered = null
+
+
+func drop():
+	if hovered && globals.holding_building != "empty":
+		hovered.type = globals.holding_building
+		hovered.texture = globals.get_texture_by_type(hovered.type)
+		hovered = null

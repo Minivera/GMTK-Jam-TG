@@ -1,12 +1,11 @@
 extends Position2D
 
 
-export(Texture) var headquarters_texture
-
 # Declare member variables here. Examples:
 var held = false
 var type = null
 
+onready var globals = get_node("/root/Globals")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +15,8 @@ func _ready():
 func pickup(type):
 	type = type
 	held = true;
-	if type == "headquarters":
-		$DraggableSprite.set_texture(headquarters_texture)
-		show()
+	$DraggingArea/DraggableSprite.set_texture(globals.get_texture_by_type(type))
+	show()
 
 
 func drop():
