@@ -20,6 +20,7 @@ region_rect = Rect2( 0, 0, 96, 96 )
 
 [node name="Ground" type="TileMap" parent="Background"]
 position = Vector2( -32, -32 )
+z_index = -1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -27,7 +28,6 @@ tile_data = PoolIntArray( 0, 8, 0, 8, 1, 131074, 9, 5, 0, 131074, 3, 1, 131075, 
 
 [node name="Fill" type="TileMap" parent="Background"]
 position = Vector2( -32, -32 )
-z_index = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
