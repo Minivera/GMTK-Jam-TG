@@ -226,7 +226,7 @@ func _find_room(given_pos):
 	return null
 
 func drop():
-	if hovered && globals.holding_room != "empty":
+	if hovered && hovered.type != "filled" && globals.holding_room != "empty":
 		hovered.build(globals.holding_room)
 		hovered = null
 		emit_signal("room_created", globals.holding_room)
