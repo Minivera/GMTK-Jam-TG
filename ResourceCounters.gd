@@ -24,11 +24,11 @@ func _process(delta):
 
 
 func _update():
-	$VSplitContainer/VBoxContainer/Energy/Amount.set_text(String(resources.energy))
-	$VSplitContainer/VBoxContainer/Food/Amount.set_text(String(resources.food))
-	$VSplitContainer/VBoxContainer/Alloy/Amount.set_text(String(resources.alloy))
-	$VSplitContainer/VBoxContainer/Gas/Amount.set_text(String(resources.gas))
-	$VSplitContainer/VBoxContainer/Science/Amount.set_text(String(resources.science))
+	$VSplitContainer/VBoxContainer/Grid/EnergyAmount.set_text(String(resources.energy))
+	$VSplitContainer/VBoxContainer/Grid/FoodAmount.set_text(String(resources.food))
+	$VSplitContainer/VBoxContainer/Grid/AlloyAmount.set_text(String(resources.alloy))
+	$VSplitContainer/VBoxContainer/Grid/GasAmount.set_text(String(resources.gas))
+	$VSplitContainer/VBoxContainer/Grid/ScienceAmount.set_text(String(resources.science))
 	
 	var changes = {
 		"energy": 0,
@@ -45,47 +45,47 @@ func _update():
 			for consumption in building["consumes"]:
 				changes[consumption[0]] -= consumption[1]
 	
-	$VSplitContainer/VBoxContainer/Energy/Increase.set_text(
+	$VSplitContainer/VBoxContainer/Grid/EnergyIncrease.set_text(
 		("+" if changes["energy"] >= 0 else "") +
 		String(changes["energy"])
 	)
-	$VSplitContainer/VBoxContainer/Energy/Increase.add_color_override(
+	$VSplitContainer/VBoxContainer/Grid/EnergyIncrease.add_color_override(
 		"font_color",
 		(green if changes["energy"] >= 0 else red)
 	)
 
-	$VSplitContainer/VBoxContainer/Food/Increase.set_text(
+	$VSplitContainer/VBoxContainer/Grid/FoodIncrease.set_text(
 		("+" if changes["food"] >= 0 else "") +
 		String(changes["food"])
 	)
-	$VSplitContainer/VBoxContainer/Food/Increase.add_color_override(
+	$VSplitContainer/VBoxContainer/Grid/FoodIncrease.add_color_override(
 		"font_color",
 		(green if changes["food"] >= 0 else red)
 	)
 
-	$VSplitContainer/VBoxContainer/Alloy/Increase.set_text(
+	$VSplitContainer/VBoxContainer/Grid/AlloyIncrease.set_text(
 		("+" if changes["alloy"] >= 0 else "") +
 		String(changes["alloy"])
 	)
-	$VSplitContainer/VBoxContainer/Alloy/Increase.add_color_override(
+	$VSplitContainer/VBoxContainer/Grid/AlloyIncrease.add_color_override(
 		"font_color",
 		(green if changes["alloy"] >= 0 else red)
 	)
 
-	$VSplitContainer/VBoxContainer/Gas/Increase.set_text(
+	$VSplitContainer/VBoxContainer/Grid/GasIncrease.set_text(
 		("+" if changes["gas"] >= 0 else "") +
 		String(changes["gas"])
 	)
-	$VSplitContainer/VBoxContainer/Gas/Increase.add_color_override(
+	$VSplitContainer/VBoxContainer/Grid/GasIncrease.add_color_override(
 		"font_color",
 		(green if changes["gas"] >= 0 else red)
 	)
 
-	$VSplitContainer/VBoxContainer/Science/Increase.set_text(
+	$VSplitContainer/VBoxContainer/Grid/ScienceIncrease.set_text(
 		("+" if changes["science"] >= 0 else "") +
 		String(changes["science"])
 	)
-	$VSplitContainer/VBoxContainer/Science/Increase.add_color_override(
+	$VSplitContainer/VBoxContainer/Grid/ScienceIncrease.add_color_override(
 		"font_color",
 		(green if changes["science"] >= 0 else red)
 	)

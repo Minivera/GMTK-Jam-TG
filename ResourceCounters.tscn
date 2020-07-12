@@ -1,13 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ResourceCounters.gd" type="Script" id=1]
+[ext_resource path="res://Icons/Food.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Icons/Science.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Icons/Energy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Icons/Alloy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Icons/Gas.tscn" type="PackedScene" id=6]
 
 [node name="ResourceCounters" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -2.00226
+margin_left = -3.3371
 margin_top = 1.66855
-margin_right = -2.0022
+margin_right = -3.33704
 margin_bottom = 1.66858
 script = ExtResource( 1 )
 __meta__ = {
@@ -20,7 +25,7 @@ margin_bottom = 148.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer"]
 margin_right = 156.0
-margin_bottom = 104.0
+margin_bottom = 154.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,125 +36,176 @@ margin_bottom = 14.0
 text = "Resources"
 uppercase = true
 
-[node name="Energy" type="HBoxContainer" parent="VSplitContainer/VBoxContainer"]
+[node name="Grid" type="GridContainer" parent="VSplitContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 156.0
-margin_bottom = 32.0
+margin_bottom = 154.0
+columns = 4
 
-[node name="Label" type="Label" parent="VSplitContainer/VBoxContainer/Energy"]
-margin_right = 50.0
-margin_bottom = 14.0
-text = "Energy: "
+[node name="EnergyIcon" parent="VSplitContainer/VBoxContainer/Grid" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
 
-[node name="Amount" type="Label" parent="VSplitContainer/VBoxContainer/Energy"]
-margin_left = 54.0
-margin_right = 78.0
-margin_bottom = 14.0
-text = "000"
-
-[node name="Increase" type="Label" parent="VSplitContainer/VBoxContainer/Energy"]
-margin_left = 82.0
-margin_right = 98.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
-text = "+0"
-
-[node name="Food" type="HBoxContainer" parent="VSplitContainer/VBoxContainer"]
-margin_top = 36.0
-margin_right = 156.0
-margin_bottom = 50.0
-
-[node name="Label" type="Label" parent="VSplitContainer/VBoxContainer/Food"]
-margin_right = 39.0
-margin_bottom = 14.0
-text = "Food: "
-
-[node name="Amount" type="Label" parent="VSplitContainer/VBoxContainer/Food"]
-margin_left = 43.0
-margin_right = 67.0
-margin_bottom = 14.0
-text = "000"
-
-[node name="Increase" type="Label" parent="VSplitContainer/VBoxContainer/Food"]
-margin_left = 71.0
-margin_right = 87.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
-text = "+0"
-
-[node name="Alloy" type="HBoxContainer" parent="VSplitContainer/VBoxContainer"]
-margin_top = 54.0
-margin_right = 156.0
-margin_bottom = 68.0
-
-[node name="Label" type="Label" parent="VSplitContainer/VBoxContainer/Alloy"]
-margin_right = 36.0
-margin_bottom = 14.0
-text = "Alloy:"
-
-[node name="Amount" type="Label" parent="VSplitContainer/VBoxContainer/Alloy"]
-margin_left = 40.0
-margin_right = 64.0
-margin_bottom = 14.0
-text = "000"
-
-[node name="Increase" type="Label" parent="VSplitContainer/VBoxContainer/Alloy"]
-margin_left = 68.0
-margin_right = 84.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
-text = "+0"
-
-[node name="Gas" type="HBoxContainer" parent="VSplitContainer/VBoxContainer"]
-margin_top = 72.0
-margin_right = 156.0
-margin_bottom = 86.0
-
-[node name="Label" type="Label" parent="VSplitContainer/VBoxContainer/Gas"]
-margin_right = 28.0
-margin_bottom = 14.0
-text = "Gas:"
-
-[node name="Amount" type="Label" parent="VSplitContainer/VBoxContainer/Gas"]
-margin_left = 32.0
-margin_right = 56.0
-margin_bottom = 14.0
-text = "000"
-
-[node name="Increase" type="Label" parent="VSplitContainer/VBoxContainer/Gas"]
-margin_left = 60.0
-margin_right = 76.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
-text = "+0"
-
-[node name="Science" type="HBoxContainer" parent="VSplitContainer/VBoxContainer"]
-margin_top = 90.0
-margin_right = 156.0
-margin_bottom = 104.0
-
-[node name="Label" type="Label" parent="VSplitContainer/VBoxContainer/Science"]
-margin_right = 53.0
-margin_bottom = 14.0
-text = "Science:"
-
-[node name="Amount" type="Label" parent="VSplitContainer/VBoxContainer/Science"]
-margin_left = 57.0
+[node name="EnergyLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 28.0
+margin_top = 5.0
 margin_right = 81.0
-margin_bottom = 14.0
+margin_bottom = 19.0
+text = "Energy: "
+align = 2
+valign = 1
+
+[node name="EnergyAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 85.0
+margin_top = 5.0
+margin_right = 109.0
+margin_bottom = 19.0
 text = "000"
 
-[node name="Increase" type="Label" parent="VSplitContainer/VBoxContainer/Science"]
+[node name="EnergyIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 113.0
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
+text = "+0"
+
+[node name="Food icon" parent="VSplitContainer/VBoxContainer/Grid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 28.0
+margin_right = 24.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 24, 24 )
+
+[node name="FoodLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 28.0
+margin_top = 33.0
+margin_right = 81.0
+margin_bottom = 47.0
+text = "Food: "
+align = 2
+
+[node name="FoodAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
 margin_left = 85.0
-margin_right = 101.0
-margin_bottom = 14.0
+margin_top = 33.0
+margin_right = 109.0
+margin_bottom = 47.0
+text = "000"
+
+[node name="FoodIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 113.0
+margin_top = 33.0
+margin_right = 129.0
+margin_bottom = 47.0
+custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
+text = "+0"
+
+[node name="AlloyIcon" parent="VSplitContainer/VBoxContainer/Grid" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 56.0
+margin_right = 24.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 24, 24 )
+
+[node name="AlloyLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 28.0
+margin_top = 61.0
+margin_right = 81.0
+margin_bottom = 75.0
+text = "Alloy:"
+align = 2
+
+[node name="AlloyAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 85.0
+margin_top = 61.0
+margin_right = 109.0
+margin_bottom = 75.0
+text = "000"
+
+[node name="AlloyIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 113.0
+margin_top = 61.0
+margin_right = 129.0
+margin_bottom = 75.0
+custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
+text = "+0"
+
+[node name="GasIcon" parent="VSplitContainer/VBoxContainer/Grid" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 84.0
+margin_right = 24.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 24, 24 )
+
+[node name="GasLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 28.0
+margin_top = 89.0
+margin_right = 81.0
+margin_bottom = 103.0
+text = "Gas:"
+align = 2
+
+[node name="GasAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 85.0
+margin_top = 89.0
+margin_right = 109.0
+margin_bottom = 103.0
+text = "000"
+
+[node name="GasIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 113.0
+margin_top = 89.0
+margin_right = 129.0
+margin_bottom = 103.0
+custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
+text = "+0"
+
+[node name="ScienceIcon" parent="VSplitContainer/VBoxContainer/Grid" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 112.0
+margin_right = 24.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 24, 24 )
+
+[node name="ScienceLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 28.0
+margin_top = 117.0
+margin_right = 81.0
+margin_bottom = 131.0
+text = "Science:"
+align = 2
+
+[node name="ScienceAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 85.0
+margin_top = 117.0
+margin_right = 109.0
+margin_bottom = 131.0
+text = "000"
+
+[node name="ScienceIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
+margin_left = 113.0
+margin_top = 117.0
+margin_right = 129.0
+margin_bottom = 131.0
 custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
 text = "+0"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VSplitContainer"]
-margin_top = 116.0
+margin_top = 166.0
 margin_right = 156.0
-margin_bottom = 148.0
+margin_bottom = 204.0
 
 [node name="Label" type="Label" parent="VSplitContainer/VBoxContainer2"]
 margin_right = 156.0
