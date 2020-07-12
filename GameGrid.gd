@@ -8,6 +8,7 @@ const cols = 5
 const scroll_speed = 7
 
 onready var globals = get_node("/root/Globals")
+onready var resources = get_node("/root/Resources")
 
 var max_scroll
 var motion = Vector2()
@@ -15,9 +16,9 @@ const still = Vector2(0, 0)
 
 # Keep a reference to all the rooms
 var rooms = []
-var buildings = []
 var hovered = null
-signal building_created(objects)
+signal room_created(objects)
+signal building_created(room_type)
 
 onready var Room = preload("res://Room.tscn")
 
@@ -69,11 +70,17 @@ func _has_created_building():
 		for room in created["rooms"]:
 			room.is_part_of_building = true
 		
-		buildings.append({
+		globals.constructed_buildings.append({
 			"rooms": created["rooms"],
 			"label": created["building"]["label"],
-			"name": created["building"]["name"]
+			"name": created["building"]["name"],
+			"produces": created["building"]["produces"],
+			"consumes": created["building"]["consume"],
 		})
+		if created["unlocks"]:
+			for unlocks in created["unlocks"]:
+				globals.unlocked_buildings.append(unlocks)
+		
 		emit_signal("building_created", created)
 		created = _verify_building_creation()
 
@@ -190,4 +197,6 @@ func drop():
 	if hovered && globals.holding_room != "empty":
 		hovered.type = globals.holding_room
 		hovered = null
+		emit_signal("room_created", globals.holding_room)
 		_has_created_building()
+

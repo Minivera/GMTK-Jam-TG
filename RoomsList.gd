@@ -16,8 +16,8 @@ func _ready():
 
 
 func _on_Computer_button_down():
-	emit_signal("room_pressed", "computer")
+	emit_signal("room_pressed", "headquarters")
 
 
 func _on_Pod_button_down():
-	emit_signal("room_pressed", "pod")
+	emit_signal("room_pressed", "living")
