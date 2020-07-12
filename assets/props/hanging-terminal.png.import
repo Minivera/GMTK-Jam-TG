@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/server-gabinetes.png-ac12fe2b3af6fa5a2851c3273e648ea0.stex"
+path="res://.import/hanging-terminal.png-df587aeb51be431c83000eddb47c4407.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset/server-gabinetes.png"
-dest_files=[ "res://.import/server-gabinetes.png-ac12fe2b3af6fa5a2851c3273e648ea0.stex" ]
+source_file="res://assets/props/hanging-terminal.png"
+dest_files=[ "res://.import/hanging-terminal.png-df587aeb51be431c83000eddb47c4407.stex" ]
 
 [params]
 
