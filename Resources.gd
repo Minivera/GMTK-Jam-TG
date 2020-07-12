@@ -1,5 +1,7 @@
 extends Node
 
+onready var globals = get_node("/root/Globals")
+
 var energy = 500
 var energy_max = 500
 const energy_increase = 250
@@ -44,20 +46,45 @@ func _change(type, amount):
 		science = clamp(science + amount, 0, science_max)
 		return
 
+
+func can_pay(type):
+	var room = globals.get_room(type)
+	if !room:
+		return false
+	
+	for cost in room["costs"]:
+		if cost[0] == "energy" and energy < cost[1]:
+			return false
+		if cost[0] == "food" and food < cost[1]:
+			return false
+		if cost[0] == "alloy" and alloy < cost[1]:
+			return false
+		if cost[0] == "gas" and gas < cost[1]:
+			return false
+		if cost[0] == "science" and science < cost[1]:
+			return false
+	
+	return true
+
 func increase_food(amount):
 	_change("food", amount)
+
 
 func decrease_food(amount):
 	_change("food", -amount)
 
+
 func increase_energy(amount):
 	_change("energy", amount)
+
 
 func decrease_energy(amount):
 	_change("energy", -amount)
 
+
 func increase_alloy(amount):
 	_change("alloy", amount)
+
 
 func decrease_alloy(amount):
 	_change("alloy", -amount)
@@ -65,11 +92,14 @@ func decrease_alloy(amount):
 func increase_gas(amount):
 	_change("gas", amount)
 
+
 func decrease_gas(amount):
 	_change("gas", -amount)
 
+
 func increase_science(amount):
 	_change("science", amount)
+
 
 func decrease_science(amount):
 	_change("science", -amount)

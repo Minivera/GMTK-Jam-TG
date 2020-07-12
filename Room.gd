@@ -54,7 +54,7 @@ func _set_infection_level(new_infection_level):
 
 
 func build(new_type):
-	if type == "filled" or type != "empty" or building_type:
+	if (type == "filled" and new_type != "empty") or (type != "filled" and type != "empty") or building_type:
 		return
 
 	building_type = new_type
@@ -107,5 +107,6 @@ func _on_ConstructionTimer_timeout():
 
 
 func _on_BuiltTimer_timeout():
+	building_type = null
 	emit_signal("room_built", self)
 	$BuiltTimer.stop()

@@ -18,7 +18,8 @@ var reactor_room = load("res://Rooms/Reactor.tscn")
 var computer_texture = load("res://assets/props/big-computer.png")
 var pod_texture = load("res://assets/props/cryo-pod.png")
 
-var holding_room = null;
+var holding_room = null
+var can_explore = false
 
 #Headquarters
 #Living Quarters
@@ -311,11 +312,19 @@ const infection_speed = 180
 const new_infection_change = 0.5
 const max_infection_level = 3
 
+func get_room(label):
+	for room in known_rooms:
+		if room["type"] == label:
+			return room
+	return null;
+
+
 func get_building(label):
 	for building in known_buildings:
 		if building["label"] == label:
 			return building
 	return null;
+
 
 func get_building_makeup(building):
 	var elements = []

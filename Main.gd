@@ -23,6 +23,9 @@ func _on_RoomsList_room_pressed(type):
 
 
 func _on_GameGrid_building_created(objects):
+	if objects["building"]["label"] == "political_center":
+		globals.can_explore = true
+	
 	if objects["building"]["label"] == "storage_facility":
 		resources.increase_max()
 	

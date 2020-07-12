@@ -226,10 +226,17 @@ func _find_room(given_pos):
 	return null
 
 func drop():
-	if hovered && hovered.type != "filled" && globals.holding_room != "empty":
+	if hovered and hovered.type != "filled" and globals.holding_room != "empty" \
+	and resources.can_pay(globals.holding_room):
 		hovered.build(globals.holding_room)
 		hovered = null
 		emit_signal("room_created", globals.holding_room)
+	# If we are exploring a room, still pay a cost
+	elif hovered and hovered.type == "filled" and globals.holding_room == "empty" and resources.alloy > 100:
+		hovered.build("empty")
+		hovered = null
+		# TODO: Make this configurable
+		resources._change("alloy", -100)
 
 
 func process_infection():

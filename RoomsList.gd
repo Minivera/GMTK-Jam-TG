@@ -1,6 +1,8 @@
 extends Node2D
 
 
+onready var globals = get_node("/root/Globals")
+
 # Declare member variables here. Examples:
 signal room_pressed(type)
 
@@ -8,6 +10,10 @@ signal room_pressed(type)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+func _process(delta):
+	if globals.can_explore and !$VBoxContainer/GridContainer/ExploringGrid.visible:
+		$VBoxContainer/GridContainer/ExploringGrid.show()
 
 
 # Play sound effect
@@ -49,3 +55,7 @@ func _on_Pump_button_down():
 
 func _on_Cryo_button_down():
 	_handle_click("cryo")
+
+
+func _on_Explore_button_down():
+	_handle_click("empty")
