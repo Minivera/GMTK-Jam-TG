@@ -14,10 +14,13 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
 func _on_Computer_button_down():
-	emit_signal("room_pressed", "headquarters")
-
+	_handle_click("headquarters")
 
 func _on_Pod_button_down():
-	emit_signal("room_pressed", "living")
+	_handle_click("living")
+
+# Play sound effect
+func _handle_click(type):
+	$ClickSfx.play()
+	emit_signal("room_pressed", type)

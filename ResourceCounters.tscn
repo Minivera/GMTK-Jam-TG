@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ResourceCounters.gd" type="Script" id=1]
 [ext_resource path="res://Icons/Food.tscn" type="PackedScene" id=2]
@@ -6,6 +6,20 @@
 [ext_resource path="res://Icons/Energy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Icons/Alloy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Icons/Gas.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/fonts/Newsgeek.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+extra_spacing_char = 1
+font_data = ExtResource( 7 )
 
 [node name="ResourceCounters" type="Control"]
 anchor_right = 1.0
@@ -22,24 +36,28 @@ __meta__ = {
 [node name="VSplitContainer" type="VSplitContainer" parent="."]
 margin_right = 156.0
 margin_bottom = 148.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer"]
-margin_right = 156.0
-margin_bottom = 154.0
+margin_right = 203.0
+margin_bottom = 156.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="VSplitContainer/VBoxContainer"]
-margin_right = 156.0
-margin_bottom = 14.0
+margin_right = 203.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 1 )
 text = "Resources"
 uppercase = true
 
 [node name="Grid" type="GridContainer" parent="VSplitContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 156.0
-margin_bottom = 154.0
+margin_top = 20.0
+margin_right = 203.0
+margin_bottom = 156.0
 columns = 4
 
 [node name="EnergyIcon" parent="VSplitContainer/VBoxContainer/Grid" instance=ExtResource( 4 )]
@@ -52,24 +70,26 @@ rect_min_size = Vector2( 24, 24 )
 
 [node name="EnergyLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
 margin_left = 28.0
-margin_top = 5.0
-margin_right = 81.0
-margin_bottom = 19.0
+margin_top = 4.0
+margin_right = 96.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 2 )
 text = "Energy: "
 align = 2
 valign = 1
 
 [node name="EnergyAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 85.0
-margin_top = 5.0
-margin_right = 109.0
-margin_bottom = 19.0
+margin_left = 100.0
+margin_top = 4.0
+margin_right = 132.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 3 )
 text = "000"
 
 [node name="EnergyIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 113.0
+margin_left = 136.0
 margin_top = 5.0
-margin_right = 129.0
+margin_right = 152.0
 margin_bottom = 19.0
 custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
 text = "+0"
@@ -85,23 +105,25 @@ rect_min_size = Vector2( 24, 24 )
 
 [node name="FoodLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
 margin_left = 28.0
-margin_top = 33.0
-margin_right = 81.0
-margin_bottom = 47.0
+margin_top = 32.0
+margin_right = 96.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 4 )
 text = "Food: "
 align = 2
 
 [node name="FoodAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 85.0
-margin_top = 33.0
-margin_right = 109.0
-margin_bottom = 47.0
+margin_left = 100.0
+margin_top = 32.0
+margin_right = 132.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 4 )
 text = "000"
 
 [node name="FoodIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 113.0
+margin_left = 136.0
 margin_top = 33.0
-margin_right = 129.0
+margin_right = 152.0
 margin_bottom = 47.0
 custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
 text = "+0"
@@ -117,23 +139,25 @@ rect_min_size = Vector2( 24, 24 )
 
 [node name="AlloyLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
 margin_left = 28.0
-margin_top = 61.0
-margin_right = 81.0
-margin_bottom = 75.0
+margin_top = 60.0
+margin_right = 96.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 4 )
 text = "Alloy:"
 align = 2
 
 [node name="AlloyAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 85.0
-margin_top = 61.0
-margin_right = 109.0
-margin_bottom = 75.0
+margin_left = 100.0
+margin_top = 60.0
+margin_right = 132.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 4 )
 text = "000"
 
 [node name="AlloyIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 113.0
+margin_left = 136.0
 margin_top = 61.0
-margin_right = 129.0
+margin_right = 152.0
 margin_bottom = 75.0
 custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
 text = "+0"
@@ -149,23 +173,25 @@ rect_min_size = Vector2( 24, 24 )
 
 [node name="GasLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
 margin_left = 28.0
-margin_top = 89.0
-margin_right = 81.0
-margin_bottom = 103.0
+margin_top = 88.0
+margin_right = 96.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 4 )
 text = "Gas:"
 align = 2
 
 [node name="GasAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 85.0
-margin_top = 89.0
-margin_right = 109.0
-margin_bottom = 103.0
+margin_left = 100.0
+margin_top = 88.0
+margin_right = 132.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 4 )
 text = "000"
 
 [node name="GasIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 113.0
+margin_left = 136.0
 margin_top = 89.0
-margin_right = 129.0
+margin_right = 152.0
 margin_bottom = 103.0
 custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
 text = "+0"
@@ -181,42 +207,45 @@ rect_min_size = Vector2( 24, 24 )
 
 [node name="ScienceLabel" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
 margin_left = 28.0
-margin_top = 117.0
-margin_right = 81.0
-margin_bottom = 131.0
+margin_top = 116.0
+margin_right = 96.0
+margin_bottom = 132.0
+custom_fonts/font = SubResource( 4 )
 text = "Science:"
 align = 2
 
 [node name="ScienceAmount" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 85.0
-margin_top = 117.0
-margin_right = 109.0
-margin_bottom = 131.0
+margin_left = 100.0
+margin_top = 116.0
+margin_right = 132.0
+margin_bottom = 132.0
+custom_fonts/font = SubResource( 4 )
 text = "000"
 
 [node name="ScienceIncrease" type="Label" parent="VSplitContainer/VBoxContainer/Grid"]
-margin_left = 113.0
+margin_left = 136.0
 margin_top = 117.0
-margin_right = 129.0
+margin_right = 152.0
 margin_bottom = 131.0
 custom_colors/font_color = Color( 0.054902, 0.788235, 0.25098, 1 )
 text = "+0"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VSplitContainer"]
-margin_top = 166.0
-margin_right = 156.0
-margin_bottom = 204.0
+margin_top = 168.0
+margin_right = 203.0
+margin_bottom = 190.0
 
 [node name="Label" type="Label" parent="VSplitContainer/VBoxContainer2"]
-margin_right = 156.0
-margin_bottom = 14.0
+margin_right = 203.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 4 )
 text = "Next production tick"
 uppercase = true
 
 [node name="ProductionProgress" type="ProgressBar" parent="VSplitContainer/VBoxContainer2"]
-margin_top = 18.0
-margin_right = 156.0
-margin_bottom = 20.0
+margin_top = 20.0
+margin_right = 203.0
+margin_bottom = 22.0
 max_value = 2.5
 step = 0.0
 percent_visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://GameGrid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RoomsList.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ShapeDict.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/tileset/Assets.png" type="Texture" id=7]
 [ext_resource path="res://assets/bgm/Video Dungeon Crawl.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sfx/sfx_wpn_punch2.wav" type="AudioStream" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Middle"
@@ -287,10 +288,10 @@ script = ExtResource( 3 )
 position = Vector2( 48.1422, 52.3848 )
 
 [node name="RoomsList" parent="." instance=ExtResource( 2 )]
-position = Vector2( 910.66, 275.409 )
+position = Vector2( 916.273, 250.715 )
 
 [node name="ShapeDict" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1054.47, 276.608 )
+position = Vector2( 916.403, 392.222 )
 shape = "political_center"
 
 [node name="DraggablePosition" type="Position2D" parent="."]
@@ -338,9 +339,14 @@ autostart = true
 [node name="InfectionTimer" type="Timer" parent="."]
 wait_time = 180.0
 
+[node name="DropSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -15.0
+autoplay = true
 [connection signal="building_created" from="GameGrid" to="." method="_on_GameGrid_building_created"]
 [connection signal="room_created" from="GameGrid" to="." method="_on_GameGrid_room_created"]
 [connection signal="room_pressed" from="RoomsList" to="." method="_on_RoomsList_room_pressed"]

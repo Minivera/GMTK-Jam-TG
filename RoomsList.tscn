@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://RoomsList.gd" type="Script" id=1]
 [ext_resource path="res://assets/props/big-computer.png" type="Texture" id=2]
 [ext_resource path="res://assets/props/cryo-pod.png" type="Texture" id=3]
+[ext_resource path="res://assets/sfx/sfx_wpn_punch1.wav" type="AudioStream" id=4]
 
 [node name="RoomsList" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,6 +12,7 @@ script = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 custom_constants/vseparation = 12
+columns = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -21,9 +23,13 @@ margin_bottom = 123.0
 texture_normal = ExtResource( 2 )
 
 [node name="Pod" type="TextureButton" parent="GridContainer"]
-margin_top = 135.0
-margin_right = 106.0
-margin_bottom = 222.0
+margin_left = 110.0
+margin_right = 169.0
+margin_bottom = 123.0
 texture_normal = ExtResource( 3 )
+
+[node name="ClickSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
 [connection signal="button_down" from="GridContainer/Computer" to="." method="_on_Computer_button_down"]
 [connection signal="button_down" from="GridContainer/Pod" to="." method="_on_Pod_button_down"]
