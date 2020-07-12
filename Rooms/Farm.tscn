@@ -1,27 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Rooms/BasicRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/props/elevator.png" type="Texture" id=2]
-[ext_resource path="res://assets/tileset/icons-1.png" type="Texture" id=3]
 [ext_resource path="res://Rooms/PodRoom.gd" type="Script" id=4]
 [ext_resource path="res://assets/props/elevator-track.png" type="Texture" id=5]
 [ext_resource path="res://assets/props/server-gabinetes.png" type="Texture" id=6]
-
-[sub_resource type="TileSet" id=1]
-0/name = "Farm"
-0/texture = ExtResource( 3 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 272, 296, 16, 16 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
 
 [node name="PodRoom" type="Control"]
 anchor_right = 1.0
@@ -56,16 +39,6 @@ rect_clip_content = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TileMap" type="TileMap" parent="Background/content"]
-scale = Vector2( 0.5, 0.5 )
-z_index = 5
-tile_set = SubResource( 1 )
-cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 8
-cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
-format = 1
-tile_data = PoolIntArray( 524289, 0, 0, 524292, 0, 0, 524297, 0, 0, 589825, 0, 0, 589829, 0, 0, 589832, 0, 0, 589835, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="Background/content"]
 position = Vector2( -12.8389, 100.866 )
