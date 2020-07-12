@@ -2,8 +2,23 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-const rows = 15
-const cols = 5
+const map = [
+	["empty", "empty", "empty", "empty", "empty"],
+	["filled", "empty", "empty", "empty", "empty"],
+	["filled", "empty", "empty", "filled", "filled"],
+	["filled", "filled", "empty", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+	["filled", "filled", "filled", "filled", "filled"],
+]
 
 const scroll_speed = 7
 
@@ -30,8 +45,8 @@ func _ready():
 	var cell_size = globals.cell_size
 	var margin_size = globals.margin_size
 	
-	for i in range(rows):
-		for j in range(cols):
+	for i in range(map.size()):
+		for j in range(map[i].size()):
 			var room = Room.instance()
 			room.offset = {
 				"x": cell_size * j + margin_size * j,
@@ -39,14 +54,14 @@ func _ready():
 			}
 			room.grid_position = Vector2(j, i)
 			room.size = Vector2(cell_size, cell_size)
-			room.type = "empty"
+			room.type = map[i][j]
 			room.connect("room_entered", self, "_on_room_entered")
 			rooms.append(room)
 			$Position2D/Camera2D.add_child(room)
 
 	$Position2D/Camera2D.set_limit(MARGIN_TOP, 0)
-	$Position2D/Camera2D.set_limit(MARGIN_BOTTOM, cell_size * rows + margin_size * rows)
-	max_scroll = cell_size * rows + margin_size * rows
+	$Position2D/Camera2D.set_limit(MARGIN_BOTTOM, cell_size * map.size() + margin_size * map.size())
+	max_scroll = cell_size * map.size() + margin_size * map.size()
 
 
 func _input(event):
@@ -186,7 +201,7 @@ func _verify_building_shape(building_shape, room):
 
 func _find_room(given_pos):
 	# Make sure we're not trying to find rooms that are out of bounds
-	if given_pos.x >= rows or given_pos.y >= cols or given_pos.x < 0 or given_pos.y < 0:
+	if given_pos.x >= map.size() or given_pos.y >= map[0].size() or given_pos.x < 0 or given_pos.y < 0:
 		return null
 	
 	# Try to find a room for the specific position

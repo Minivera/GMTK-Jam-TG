@@ -53,7 +53,7 @@ func _set_infection_level(new_infection_level):
 
 
 func build(new_type):
-	if type != "empty" or building_type:
+	if type == "filled" or type != "empty" or building_type:
 		return
 
 	building_type = new_type
