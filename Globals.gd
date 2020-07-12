@@ -6,7 +6,14 @@ const margin_size = 0
 var filled_room = load("res://Rooms/FilledRoom.tscn")
 var empty_room = load("res://Rooms/BasicRoom.tscn")
 var computer_room = load("res://Rooms/ComputerRoom.tscn")
-var pod_room = load("res://Rooms/PodRoom.tscn")
+var energy_room = load("res://Rooms/Energy Cell.tscn")
+var cryo_room = load("res://Rooms/Cryo Room.tscn")
+var fabricator_room = load("res://Rooms/Fabricator.tscn")
+var farm_room = load("res://Rooms/Farm.tscn")
+var lab_room = load("res://Rooms/Lab.tscn")
+var living_room = load("res://Rooms/Living Quarters.tscn")
+var pump_room = load("res://Rooms/Pump.tscn")
+var reactor_room = load("res://Rooms/Reactor.tscn")
 
 var computer_texture = load("res://assets/props/big-computer.png")
 var pod_texture = load("res://assets/props/cryo-pod.png")
@@ -56,7 +63,7 @@ var known_rooms = [
 		"costs": [["alloy", 45]]
 	},
 	{
-		"type": "pump",
+		"type": "cryo",
 		"costs": [["alloy", 100], ["energy", 20]]
 	}
 ]
@@ -73,7 +80,7 @@ var known_buildings = [
 		"consumes": [["food", 10]],
 		"shapes": [
 			[
-				["living", null],
+				["energy", null],
 				["headquarters", "living"]
 			],
 			[
@@ -139,11 +146,26 @@ func get_building_makeup(building):
 	
 	return elements
 
+
 func get_scene_by_type(type):
 	if type == "empty":
 		return empty_room.instance()
 	elif type == "headquarters":
 		return computer_room.instance()
 	elif type == "living":
-		return pod_room.instance()
+		return living_room.instance()
+	elif type == "farm":
+		return farm_room.instance()
+	elif type == "reactor":
+		return reactor_room.instance()
+	elif type == "energy":
+		return energy_room.instance()
+	elif type == "fabricator":
+		return fabricator_room.instance()
+	elif type == "lab":
+		return lab_room.instance()
+	elif type == "pump":
+		return pump_room.instance()
+	elif type == "cryo":
+		return cryo_room.instance()
 	return filled_room.instance()

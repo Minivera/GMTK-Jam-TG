@@ -27,6 +27,7 @@ Resources="*res://Resources.gd"
 [display]
 
 window/size/width=1400
+window/size/height=800
 
 [rendering]
 
