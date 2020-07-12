@@ -15,17 +15,9 @@ func _ready():
 #	pass
 
 
-func _on_Headquarters_button_down():
-	emit_signal("room_pressed", "headquarters")
+func _on_Computer_button_down():
+	emit_signal("room_pressed", "computer")
 
 
-func _on_Energy_button_down():
-	emit_signal("room_pressed", "energy")
-
-
-func _on_Bank_button_down():
-	emit_signal("room_pressed", "bank")
-
-
-func _on_Restaurant_button_down():
-	emit_signal("room_pressed", "restaurant")
+func _on_Pod_button_down():
+	emit_signal("room_pressed", "pod")
