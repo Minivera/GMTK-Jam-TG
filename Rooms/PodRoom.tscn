@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Rooms/BasicRoom.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/backgrounds/background.png" type="Texture" id=2]
 [ext_resource path="res://assets/props/cryo-pod.png" type="Texture" id=3]
 [ext_resource path="res://Rooms/PodRoom.gd" type="Script" id=4]
 
@@ -19,7 +18,6 @@ __meta__ = {
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
 z_as_relative = false
-texture = ExtResource( 2 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 96, 96 )
@@ -30,8 +28,66 @@ margin_top = -30.0
 margin_right = 32.0
 margin_bottom = 34.0
 
-[node name="cryo-pod" type="Sprite" parent="Background"]
-position = Vector2( 50.2609, 46.9676 )
-scale = Vector2( 0.809178, 0.809178 )
+[node name="content" type="Control" parent="Background"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cryo-pod" type="Sprite" parent="Background/content"]
+position = Vector2( 44.2101, 60.0885 )
+scale = Vector2( 0.588265, 0.588265 )
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="cryo-pod2" type="Sprite" parent="Background/content"]
+position = Vector2( 71.1188, 60.0885 )
+scale = Vector2( 0.588265, 0.588265 )
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="cryo-pod3" type="Sprite" parent="Background/content"]
+position = Vector2( 108.186, 60.0885 )
+scale = Vector2( 0.588265, 0.588265 )
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="cryo-pod4" type="Sprite" parent="Background/content"]
+position = Vector2( 8.34706, 60.0885 )
+scale = Vector2( 0.588265, 0.588265 )
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="content2" type="Control" parent="Background"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cryo-pod" type="Sprite" parent="Background/content2"]
+position = Vector2( 44.2101, 60.0885 )
+scale = Vector2( 0.588265, 0.588265 )
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="cryo-pod2" type="Sprite" parent="Background/content2"]
+position = Vector2( 71.1188, 60.0885 )
+scale = Vector2( 0.588265, 0.588265 )
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="cryo-pod3" type="Sprite" parent="Background/content2"]
+position = Vector2( 108.186, 60.0885 )
+scale = Vector2( 0.588265, 0.588265 )
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="cryo-pod4" type="Sprite" parent="Background/content2"]
+position = Vector2( 8.34706, 60.0885 )
+scale = Vector2( 0.588265, 0.588265 )
 z_as_relative = false
 texture = ExtResource( 3 )
