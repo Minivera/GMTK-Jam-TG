@@ -9,9 +9,11 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		if (globals.holding_room != null):
+			$DropSfx.play()
+		
 		$DraggablePosition.drop()
 		$GameGrid.drop()
-		$DropSfx.play()
 		globals.holding_room = null
 
 func _on_RoomsList_room_pressed(type):
