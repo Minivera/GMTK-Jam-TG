@@ -73,7 +73,7 @@ var known_buildings = [
 		"consumes": [["food", 10]],
 		"shapes": [
 			[
-				["energy", null],
+				["living", null],
 				["headquarters", "living"]
 			],
 			[
@@ -116,10 +116,7 @@ var known_buildings = [
 	},
 ]
 var unlocked_buildings = ["political_center"]
-var constructed_buildings = [{
-	"produces": [["energy", 10], ["gas", 5]],
-	"consumes": [["alloy", 5], ["food", 5]]
-}]
+var constructed_buildings = []
 
 const infection_speed = 180
 const new_infection_change = 0.5

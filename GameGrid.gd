@@ -56,6 +56,7 @@ func _ready():
 			room.size = Vector2(cell_size, cell_size)
 			room.type = map[i][j]
 			room.connect("room_entered", self, "_on_room_entered")
+			room.connect("room_built", self, "_on_room_built")
 			rooms.append(room)
 			$Position2D/Camera2D.add_child(room)
 
@@ -82,22 +83,31 @@ func _on_room_entered(room):
 	hovered = room
 
 
+func _on_room_built(room):
+	_has_created_building()
+
+
 func _has_created_building():
 	var created = _verify_building_creation()
 	while created:
 		for room in created["rooms"]:
 			room.is_part_of_building = true
+			room.connect_with_building(created["rooms"])
 		
-		globals.constructed_buildings.append({
+		var building = {
 			"rooms": created["rooms"],
 			"label": created["building"]["label"],
 			"name": created["building"]["name"],
-			"produces": created["building"]["produces"],
-			"consumes": created["building"]["consume"],
-		})
-		if created["unlocks"]:
-			for unlocks in created["unlocks"]:
+		}
+		if created["building"].has("produces"):
+			building["produces"] = created["building"]["produces"]
+		if created["building"].has("consumes"):
+			building["consumes"] = created["building"]["consumes"]
+		if created["building"].has("unlocks"):
+			for unlocks in created["building"]["unlocks"]:
 				globals.unlocked_buildings.append(unlocks)
+		
+		globals.constructed_buildings.append(building)
 		
 		emit_signal("building_created", created)
 		created = _verify_building_creation()
@@ -112,7 +122,11 @@ func _verify_building_creation():
 		
 		# Loop in all the possible buildings a player can create
 		# TODO: Limit this to the buildings the player has unlocked
-		for building in globals.known_buildings:
+		for building_label in globals.unlocked_buildings:
+			var building = globals.get_building(building_label)
+			if !building:
+				continue
+			
 			# Get the types that make up this building
 			var elements = globals.get_building_makeup(building)
 			
@@ -216,7 +230,6 @@ func drop():
 		hovered.build(globals.holding_room)
 		hovered = null
 		emit_signal("room_created", globals.holding_room)
-		_has_created_building()
 
 
 func process_infection():

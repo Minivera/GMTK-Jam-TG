@@ -20,6 +20,9 @@ func _on_RoomsList_room_pressed(type):
 
 
 func _on_GameGrid_building_created(objects):
+	if !objects["building"].has("produces"):
+		return
+	
 	# If we create a building that produces gas, let's start the infection timer
 	for production in objects["building"]["produces"]:
 		if production[0] == "gas":
@@ -37,10 +40,10 @@ func _on_GameGrid_room_created(room_type):
 
 func _on_ResourceTimer_timeout():
 	for building in globals.constructed_buildings:
-		if building["produces"]:
+		if building.has("produces"):
 			for production in building["produces"]:
 				resources._change(production[0], production[1])
-		if building["consumes"]:
+		if building.has("consumes"):
 			for consumption in building["consumes"]:
 				resources._change(consumption[0], -consumption[1])
 

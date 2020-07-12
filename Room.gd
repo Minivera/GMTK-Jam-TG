@@ -17,6 +17,7 @@ var building_room = load("res://Rooms/BuildingRoom.tscn")
 
 signal room_entered(object)
 signal room_exited(object)
+signal room_built(object)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -65,6 +66,31 @@ func build(new_type):
 	$Area2D/RoomView.add_child(building)
 	$ConstructionTimer.start()
 
+
+func connect_with_building(other_rooms):
+	var connectors = {}
+	for room in other_rooms:
+		# Ignore the current room
+		if room == self:
+			continue
+		
+		# Try to find the location of this room relative to the others
+		# First, check if the room is directly above
+		if room.grid_position.x == self.grid_position.x and room.grid_position.y - self.grid_position.y == -1:
+			connectors["top"] = true
+		# Next, check if the room is directly bellow
+		elif room.grid_position.x == self.grid_position.x and room.grid_position.y - self.grid_position.y == 1:
+			connectors["bottom"] = true
+		# Check if the room is directly to the left
+		elif room.grid_position.y == self.grid_position.y and room.grid_position.x - self.grid_position.x == -1:
+			connectors["left"] = true
+		# Check if the room is directly to the right
+		elif room.grid_position.y == self.grid_position.y and room.grid_position.x - self.grid_position.x == 1:
+			connectors["right"] = true
+	
+	$Area2D/RoomView.get_children()[0].get_node("Background/BasicRoom").connected_locations = connectors
+
+
 func _on_Area2D_area_entered(area):
 	if area.name == "DraggingArea" && globals.holding_room:
 		emit_signal("room_entered", self)
@@ -77,3 +103,9 @@ func _on_Area2D_area_exited(area):
 
 func _on_ConstructionTimer_timeout():
 	_set_type(building_type)
+	$BuiltTimer.start()
+
+
+func _on_BuiltTimer_timeout():
+	emit_signal("room_built", self)
+	$BuiltTimer.stop()

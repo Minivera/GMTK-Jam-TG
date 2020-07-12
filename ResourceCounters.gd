@@ -38,10 +38,10 @@ func _update():
 		"science": 0,
 	}
 	for building in globals.constructed_buildings:
-		if building["produces"]:
+		if building.has("produces"):
 			for production in building["produces"]:
 				changes[production[0]] += production[1]
-		if building["consumes"]:
+		if building.has("consumes"):
 			for consumption in building["consumes"]:
 				changes[consumption[0]] -= consumption[1]
 	

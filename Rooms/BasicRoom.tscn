@@ -368,6 +368,12 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
 
+[node name="Connectors" type="TileMap" parent="Background"]
+position = Vector2( -32, -32 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
 [node name="Floor" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
