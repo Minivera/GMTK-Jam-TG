@@ -9,7 +9,8 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -1.78381
-margin_bottom = -1.78381
+margin_right = -1240.0
+margin_bottom = -441.784
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,9 +26,9 @@ region_rect = Rect2( 0, 0, 96, 96 )
 
 [node name="BasicRoom" parent="Background" instance=ExtResource( 1 )]
 margin_left = -32.0
-margin_top = -32.0
+margin_top = -30.0
 margin_right = 32.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 
 [node name="big-computer" type="Sprite" parent="Background"]
 position = Vector2( 50.2609, 46.9676 )
