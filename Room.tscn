@@ -12,5 +12,10 @@ script = ExtResource( 1 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 z_index = 2
 polygon = PoolVector2Array( 0, 0, 96, 0, 96, 96, 0, 96 )
+
+[node name="ConstructionTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="timeout" from="ConstructionTimer" to="." method="_on_ConstructionTimer_timeout"]

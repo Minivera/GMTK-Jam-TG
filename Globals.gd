@@ -3,6 +3,7 @@ extends Node
 const cell_size = 160
 const margin_size = 0
 
+var filled_room = load("res://Rooms/FilledRoom.tscn")
 var empty_room = load("res://Rooms/BasicRoom.tscn")
 var computer_room = load("res://Rooms/ComputerRoom.tscn")
 var pod_room = load("res://Rooms/PodRoom.tscn")
@@ -142,8 +143,10 @@ func get_building_makeup(building):
 	return elements
 
 func get_scene_by_type(type):
-	if type == "headquarters":
+	if type == "empty":
+		return empty_room.instance()
+	elif type == "headquarters":
 		return computer_room.instance()
 	elif type == "living":
 		return pod_room.instance()
-	return empty_room.instance()
+	return filled_room.instance()
