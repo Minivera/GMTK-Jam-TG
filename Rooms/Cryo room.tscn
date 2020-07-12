@@ -32,10 +32,8 @@ margin_right = 32.0
 margin_bottom = 34.0
 
 [node name="content" type="Control" parent="Background"]
-margin_left = 2.5
-margin_top = -1.5
-margin_right = 98.5
-margin_bottom = 94.5
+margin_right = 96.0
+margin_bottom = 96.0
 rect_clip_content = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -121,67 +119,67 @@ scale = Vector2( 0.306487, 0.306487 )
 texture = ExtResource( 2 )
 
 [node name="Sprite17" type="Sprite" parent="Background/content"]
-position = Vector2( 9.84494, 98.6131 )
+position = Vector2( 10.8461, 98.2794 )
 rotation = 1.5708
-scale = Vector2( 0.496786, 0.496786 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 5 )
 
 [node name="Sprite18" type="Sprite" parent="Background/content"]
-position = Vector2( 33.1794, 98.4363 )
+position = Vector2( 34.1805, 98.1026 )
 rotation = 1.5708
-scale = Vector2( 0.496786, 0.496786 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 5 )
 
 [node name="Sprite19" type="Sprite" parent="Background/content"]
-position = Vector2( 57.5746, 98.7899 )
+position = Vector2( 58.5757, 98.4562 )
 rotation = 1.5708
-scale = Vector2( 0.496786, 0.496786 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 5 )
 
 [node name="Sprite20" type="Sprite" parent="Background/content"]
-position = Vector2( 80.9091, 98.6131 )
+position = Vector2( 81.9102, 98.2794 )
 rotation = 1.5708
-scale = Vector2( 0.496786, 0.496786 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 5 )
 
 [node name="Sprite21" type="Sprite" parent="Background/content"]
 position = Vector2( 9.84494, 12.6996 )
 rotation = 1.5708
-scale = Vector2( 0.496786, 0.496786 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
 [node name="Sprite22" type="Sprite" parent="Background/content"]
 position = Vector2( 33.1794, 12.5228 )
 rotation = 1.5708
-scale = Vector2( 0.496786, 0.496786 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
 [node name="Sprite23" type="Sprite" parent="Background/content"]
 position = Vector2( 57.5746, 12.8764 )
 rotation = 1.5708
-scale = Vector2( 0.496786, 0.496786 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
 [node name="Sprite24" type="Sprite" parent="Background/content"]
 position = Vector2( 80.9091, 12.6996 )
 rotation = 1.5708
-scale = Vector2( 0.496786, 0.496786 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="Background/content/Sprite24"]
-position = Vector2( -2.0047, 77.9033 )
-rotation = -4.69668
-scale = Vector2( 0.616939, 0.61694 )
+[node name="Sprite" type="Sprite" parent="Background/content"]
+position = Vector2( 42.2078, 11.7036 )
+rotation = -3.12588
+scale = Vector2( 0.306487, 0.306487 )
 texture = ExtResource( 2 )
 
-[node name="Sprite3" type="Sprite" parent="Background/content/Sprite24"]
-position = Vector2( -2.0047, 119.537 )
-rotation = -4.69668
-scale = Vector2( 0.616939, 0.61694 )
+[node name="Sprite3" type="Sprite" parent="Background/content"]
+position = Vector2( 21.5248, 11.7035 )
+rotation = -3.12588
+scale = Vector2( 0.306487, 0.306487 )
 texture = ExtResource( 2 )
 
-[node name="Sprite2" type="Sprite" parent="Background/content/Sprite24"]
-position = Vector2( -2.0047, 27.3738 )
-rotation = -4.69668
-scale = Vector2( 0.616939, 0.61694 )
+[node name="Sprite2" type="Sprite" parent="Background/content"]
+position = Vector2( 67.3102, 11.7036 )
+rotation = -3.12588
+scale = Vector2( 0.306487, 0.306487 )
 texture = ExtResource( 2 )

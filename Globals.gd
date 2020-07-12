@@ -168,4 +168,5 @@ func get_scene_by_type(type):
 		return pump_room.instance()
 	elif type == "cryo":
 		return cryo_room.instance()
-	return filled_room.instance()
+	else:
+		return filled_room.instance()
