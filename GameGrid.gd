@@ -20,10 +20,13 @@ var hovered = null
 signal room_created(objects)
 signal building_created(room_type)
 
+var rng = RandomNumberGenerator.new()
+
 onready var Room = preload("res://Room.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	var cell_size = globals.cell_size
 	var margin_size = globals.margin_size
 	
@@ -199,4 +202,56 @@ func drop():
 		hovered = null
 		emit_signal("room_created", globals.holding_room)
 		_has_created_building()
+
+
+func process_infection():
+	# Check if we have an infection going
+	var has_infection = false
+	for room in rooms:
+		if room.is_infected:
+			has_infection = true
+			break
+	
+	# Randomly decide between infecting a new room or increasing infection of an existing room
+	if has_infection and rng.randf() > globals.new_infection_change:
+		# Find an infected room
+		var infected_rooms = []
+		for room in rooms:
+			if room.is_infected:
+				infected_rooms.append(room)
+		
+		# Select a random room to process
+		var selected = infected_rooms[rng.randi_range(0, infected_rooms.size() - 1)]
+		
+		# Check if it is fully infected
+		if selected.infection_level >= globals.max_infection_level:
+			# If it is, then spread the infection to adjacent tiles that are not empty
+			# nor the wall tiles
+			for side in [[-1, 0], [0, -1], [1, 0], [0, 1]]:
+				var found = _find_room(Vector2(
+					selected.grid_position.x - side[0],
+					selected.grid_position.y - side[1]
+				))
+				
+				if found:
+					found.is_infected = true
+		else:
+			selected.infection_level += 1
+		
+		return
+	
+	# Get a random building that produces gas
+	var gas_producers = []
+	for building in globals.constructed_buildings:
+		for production in building["produces"]:
+			if production[0] == "gas":
+				gas_producers.append(building)
+	
+	var selected = gas_producers[rng.randi_range(0, gas_producers.size() - 1)]
+	
+	# Get a random room from the lists of rooms
+	var room = selected["rooms"][rng.randi_range(0, selected["rooms"].size() - 1)]
+	
+	# Infect the shit out of it!
+	room.is_infected = true
 

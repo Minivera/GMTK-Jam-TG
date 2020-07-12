@@ -116,9 +116,13 @@ var known_buildings = [
 ]
 var unlocked_buildings = ["political_center"]
 var constructed_buildings = [{
-	"produces": [["energy", 10], ["food", 5]],
-	"consumes": [["alloy", 5], ["gas", 5]]
+	"produces": [["energy", 10], ["gas", 5]],
+	"consumes": [["alloy", 5], ["food", 5]]
 }]
+
+const infection_speed = 180
+const new_infection_change = 0.5
+const max_infection_level = 3
 
 func get_building(label):
 	for building in known_buildings:

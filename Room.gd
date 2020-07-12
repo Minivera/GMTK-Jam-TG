@@ -7,6 +7,8 @@ export (Vector2) var grid_position
 export (Vector2) var size
 export (String) var type setget _set_type
 export (bool) var is_part_of_building = false
+export (bool) var is_infected = false setget _set_infected
+export (int) var infection_level = false setget _set_infection_level
 
 
 onready var globals = get_node("/root/Globals")
@@ -35,6 +37,15 @@ func _set_type(new_type):
 	if globals:
 		$Area2D/RoomView.add_child(globals.get_scene_by_type(new_type))
 
+
+func _set_infected(new_is_infected):
+	is_infected = new_is_infected
+	infection_level = 1
+	$Area2D/RoomView.get_children()[0].infection_level = infection_level
+	
+func _set_infection_level(new_infection_level):
+	infection_level = new_infection_level
+	$Area2D/RoomView.get_children()[0].infection_level = infection_level
 
 func _on_Area2D_area_entered(area):
 	if area.name == "DraggingArea" && globals.holding_room:
