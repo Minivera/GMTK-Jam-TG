@@ -9,13 +9,20 @@ onready var globals = get_node("/root/Globals")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$DraggingArea.position.x -= globals.cell_size / 2
+	$DraggingArea.position.y -= globals.cell_size / 2
+	$DraggingArea/CollisionPolygon2D.position.x += globals.cell_size / 2
+	$DraggingArea/CollisionPolygon2D.position.y += globals.cell_size / 2
 
 
 func pickup(type):
 	type = type
 	held = true;
-	$DraggingArea/DraggableSprite.set_texture(globals.get_texture_by_type(type))
+
+	for child in $DraggingArea/RoomView.get_children():
+		child.queue_free()
+
+	$DraggingArea/RoomView.add_child(globals.get_scene_by_type(type))
 	show()
 
 

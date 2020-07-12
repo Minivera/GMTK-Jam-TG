@@ -5,7 +5,7 @@ extends Node2D
 const rows = 15
 const cols = 5
 
-const scroll_speed = 2
+const scroll_speed = 7
 
 onready var globals = get_node("/root/Globals")
 
@@ -35,7 +35,6 @@ func _ready():
 			}
 			room.grid_position = Vector2(j, i)
 			room.size = Vector2(cell_size, cell_size)
-			room.texture = globals.empty_texture
 			room.type = "empty"
 			room.connect("room_entered", self, "_on_room_entered")
 			rooms.append(room)
@@ -190,6 +189,5 @@ func _find_room(given_pos):
 func drop():
 	if hovered && globals.holding_room != "empty":
 		hovered.type = globals.holding_room
-		hovered.texture = globals.get_texture_by_type(hovered.type)
 		hovered = null
 		_has_created_building()

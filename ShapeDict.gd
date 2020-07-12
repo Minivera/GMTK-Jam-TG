@@ -45,7 +45,6 @@ func _render_shape():
 			}
 			room.grid_position = Vector2(j, i)
 			room.size = Vector2(cell_size, cell_size)
-			room.texture = globals.get_texture_by_type(shape_element)
 			room.type = shape_element
 			$ShapeContainer.add_child(room)
 
