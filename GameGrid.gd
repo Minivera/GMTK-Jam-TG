@@ -43,7 +43,6 @@ func _ready():
 			room.connect("room_entered", self, "_on_room_entered")
 			rooms.append(room)
 			$Position2D/Camera2D.add_child(room)
-	rooms[6].is_infected = true	
 
 	$Position2D/Camera2D.set_limit(MARGIN_TOP, 0)
 	$Position2D/Camera2D.set_limit(MARGIN_BOTTOM, cell_size * rows + margin_size * rows)
@@ -199,7 +198,7 @@ func _find_room(given_pos):
 
 func drop():
 	if hovered && globals.holding_room != "empty":
-		hovered.type = globals.holding_room
+		hovered.build(globals.holding_room)
 		hovered = null
 		emit_signal("room_created", globals.holding_room)
 		_has_created_building()

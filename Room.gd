@@ -10,8 +10,11 @@ export (bool) var is_part_of_building = false
 export (bool) var is_infected = false setget _set_infected
 export (int) var infection_level = false setget _set_infection_level
 
+var building_type = null
 
 onready var globals = get_node("/root/Globals")
+var building_room = load("res://Rooms/BuildingRoom.tscn")
+
 signal room_entered(object)
 signal room_exited(object)
 
@@ -42,10 +45,25 @@ func _set_infected(new_is_infected):
 	is_infected = new_is_infected
 	infection_level = 1
 	$Area2D/RoomView.get_children()[0].infection_level = infection_level
-	
+
+
 func _set_infection_level(new_infection_level):
 	infection_level = new_infection_level
 	$Area2D/RoomView.get_children()[0].infection_level = infection_level
+
+
+func build(new_type):
+	if type != "empty" or building_type:
+		return
+
+	building_type = new_type
+	for child in $Area2D/RoomView.get_children():
+		child.queue_free()
+	
+	var building = building_room.instance()
+	building.build_amount = $ConstructionTimer.wait_time
+	$Area2D/RoomView.add_child(building)
+	$ConstructionTimer.start()
 
 func _on_Area2D_area_entered(area):
 	if area.name == "DraggingArea" && globals.holding_room:
@@ -55,3 +73,7 @@ func _on_Area2D_area_entered(area):
 func _on_Area2D_area_exited(area):
 	if area.name == "DraggingArea" && globals.holding_room:
 		emit_signal("room_exited", self)
+
+
+func _on_ConstructionTimer_timeout():
+	_set_type(building_type)
