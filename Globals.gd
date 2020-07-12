@@ -56,7 +56,7 @@ var known_rooms = [
 	},
 	{
 		"type": "lab",
-		"costs": [["alloy", 55]]
+		"costs": [["alloy", 55], ["science", 5]]
 	},
 	{
 		"type": "pump",
@@ -64,7 +64,7 @@ var known_rooms = [
 	},
 	{
 		"type": "cryo",
-		"costs": [["alloy", 100], ["energy", 20]]
+		"costs": [["alloy", 100], ["energy", 20], ["science", 5]]
 	}
 ]
 var known_buildings = [
@@ -118,6 +118,188 @@ var known_buildings = [
 			],
 			[
 				["living", "energy", "farm"],
+			]
+		],
+	},
+	{
+		"label": "alloy_production_facility",
+		"name": "Alloy production facility",
+		"consumes": [["energy", 5]],
+		"produces": [["alloy", 20]],
+		"shapes": [
+			[
+				["fabricator"],
+				["energy"],
+				["living"]
+			],
+			[
+				["fabricator", "energy", "living"],
+			],
+			[
+				["living"],
+				["energy"],
+				["fabricator"]
+			],
+			[
+				["living", "energy", "fabricator"],
+			]
+		],
+	},
+	{
+		"label": "energy_reactor",
+		"name": "Energy reactor",
+		"consumes": [["gas", 5]],
+		"produces": [["energy", 30]],
+		"shapes": [
+			[
+				["energy", null],
+				["reactor", "lab"],
+				["living", null]
+			],
+			[
+				[null, "lab", null],
+				["energy", "reactor", "living"],
+			],
+			[
+				["living", null],
+				["reactor", "lab"],
+				["energy", null]
+			],
+			[
+				["living", "reactor", "energy"],
+				[null, "lab", null],
+			]
+		],
+	},
+	{
+		"label": "operations_center",
+		"name": "Operations center",
+		"consumes": [["energy", 10]],
+		"unlocks": [
+			"science_lab",
+			"gas_extractor",
+			"storage_facility",
+			"infection_control_center"
+		],
+		"shapes": [
+			[
+				["farm", null],
+				["lab", "energy"],
+				["living", "headquarters"]
+			],
+			[
+				["living", "lab", "farm"],
+				["headquarters", "energy", null],
+			],
+			[
+				["headquarters", "living"],
+				["energy", "lab"],
+				[null, "farm"]
+			],
+			[
+				["farm", "lab", "living"],
+				[null, "energy", "headquarters"],
+			]
+		],
+	},
+	{
+		"label": "science_lab",
+		"name": "Science lab",
+		"consumes": [["energy", 5], ["gas", 5]],
+		"produces": [["science", 10]],
+		"shapes": [
+			[
+				["lab", "energy"],
+				["living", "reactor"]
+			],
+			[
+				["living", "lab"],
+				["reactor", "energy"],
+			],
+			[
+				["reactor", "living"],
+				["energy", "lab"],
+			],
+			[
+				["energy", "reactor"],
+				["lab", "living"],
+			]
+		],
+	},
+	{
+		"label": "gas_extractor",
+		"name": "Gas extractor",
+		"consumes": [["energy", 10]],
+		"produces": [["gas", 15]],
+		"shapes": [
+			[
+				["pump", "energy", "living", "lab"],
+			],
+			[
+				["pump"],
+				["energy"],
+				["living"],
+				["lab"],
+			],
+			[
+				["lab", "living", "energy", "pump"],
+			],
+			[
+				["lab"],
+				["living"],
+				["energy"],
+				["pump"],
+			]
+		],
+	},
+	{
+		"label": "storage_facility",
+		"name": "Storage facility",
+		"consumes": [["energy", 5]],
+		"shapes": [
+			[
+				["pump", "reactor", "lab", "farm", "fabricator"],
+			],
+			[
+				["pump"],
+				["reactor"],
+				["lab"],
+				["farm"],
+				["fabricator"]
+			],
+			[
+				["fabricator", "farm", "lab", "reactor", "pump"],
+			],
+			[
+				["fabricator"],
+				["farm"],
+				["lab"],
+				["reactor"],
+				["pump"],
+			]
+		],
+	},
+	{
+		"label": "infection_control_center",
+		"name": "Infection control center",
+		"shapes": [
+			[
+				["lab", "headquarters"],
+				["pump", "fabricator"],
+				["living", "energy"]
+			],
+			[
+				["living", "pump", "lab"],
+				["energy", "fabricator", "headquarters"],
+			],
+			[
+				["energy", "living"],
+				[ "fabricator", "pump"],
+				["headquarters", "lab"],
+			],
+			[
+				["headquarters", "fabricator", "energy"],
+				["lab", "pump", "living"],
 			]
 		],
 	},

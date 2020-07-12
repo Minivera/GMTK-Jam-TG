@@ -20,6 +20,13 @@ var science = 0
 var science_max = 500
 const science_increase = 200
 
+func increase_max():
+	energy_max += energy_increase
+	food_max += food_increase
+	alloy_max += alloy_increase
+	gas_max += gas_increase
+	science_max += science_increase
+
 func _change(type, amount):
 	if type == "energy":
 		energy = clamp(energy + amount, 0, energy_max)
