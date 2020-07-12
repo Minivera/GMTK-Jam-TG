@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GameGrid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RoomsList.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://DraggablePosition.gd" type="Script" id=5]
 [ext_resource path="res://ShapeDict.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/tileset/Assets.png" type="Texture" id=7]
+[ext_resource path="res://assets/bgm/Video Dungeon Crawl.wav" type="AudioStream" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Middle"
@@ -334,8 +335,14 @@ margin_bottom = 400.0
 wait_time = 2.5
 autostart = true
 
+
 [node name="InfectionTimer" type="Timer" parent="."]
 wait_time = 180.0
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -15.0
+
 [connection signal="building_created" from="GameGrid" to="." method="_on_GameGrid_building_created"]
 [connection signal="room_created" from="GameGrid" to="." method="_on_GameGrid_room_created"]
 [connection signal="room_pressed" from="RoomsList" to="." method="_on_RoomsList_room_pressed"]
