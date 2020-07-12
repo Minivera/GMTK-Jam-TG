@@ -3,11 +3,20 @@ extends Control
 
 export (int) var infection_level = false setget _set_infection_level
 
+const normalBg = preload("res://assets/backgrounds/background2.png")
+const infectedBg =  preload("res://assets/backgrounds/background-infected.png")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_change_tiles()
+	_change_background()
 
+func _change_background():
+	if (infection_level > 0 || infection_level):
+		$Background.texture = infectedBg
+	else:
+		$Background.texture = normalBg
 
 func _change_tiles():
 	var sections = [
@@ -39,3 +48,4 @@ func _change_tiles():
 func _set_infection_level(new_infection_level):
 	infection_level = new_infection_level
 	_change_tiles()
+	_change_background()
