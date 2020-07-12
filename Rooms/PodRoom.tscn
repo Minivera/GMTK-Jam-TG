@@ -59,35 +59,3 @@ position = Vector2( 8.34706, 60.0885 )
 scale = Vector2( 0.588265, 0.588265 )
 z_as_relative = false
 texture = ExtResource( 3 )
-
-[node name="content2" type="Control" parent="Background"]
-margin_right = 96.0
-margin_bottom = 96.0
-rect_clip_content = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="cryo-pod" type="Sprite" parent="Background/content2"]
-position = Vector2( 44.2101, 60.0885 )
-scale = Vector2( 0.588265, 0.588265 )
-z_as_relative = false
-texture = ExtResource( 3 )
-
-[node name="cryo-pod2" type="Sprite" parent="Background/content2"]
-position = Vector2( 71.1188, 60.0885 )
-scale = Vector2( 0.588265, 0.588265 )
-z_as_relative = false
-texture = ExtResource( 3 )
-
-[node name="cryo-pod3" type="Sprite" parent="Background/content2"]
-position = Vector2( 108.186, 60.0885 )
-scale = Vector2( 0.588265, 0.588265 )
-z_as_relative = false
-texture = ExtResource( 3 )
-
-[node name="cryo-pod4" type="Sprite" parent="Background/content2"]
-position = Vector2( 8.34706, 60.0885 )
-scale = Vector2( 0.588265, 0.588265 )
-z_as_relative = false
-texture = ExtResource( 3 )

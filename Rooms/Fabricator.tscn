@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Rooms/BasicRoom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/props/elevator-track.png" type="Texture" id=2]
+[ext_resource path="res://assets/props/hanging-terminal.png" type="Texture" id=3]
+[ext_resource path="res://Rooms/PodRoom.gd" type="Script" id=4]
+[ext_resource path="res://assets/tileset/extraRoom.tres" type="TileSet" id=5]
+[ext_resource path="res://assets/props/cryo-pod.png" type="Texture" id=6]
+
+[node name="PodRoom" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.78381
+margin_right = -1240.0
+margin_bottom = -441.784
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 32, 32 )
+z_as_relative = false
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 96, 96 )
+
+[node name="BasicRoom" parent="Background" instance=ExtResource( 1 )]
+margin_left = -32.0
+margin_top = -30.0
+margin_right = 32.0
+margin_bottom = 34.0
+
+[node name="content" type="Control" parent="Background"]
+margin_left = 2.5
+margin_top = -1.5
+margin_right = 98.5
+margin_bottom = 94.5
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="Background/content"]
+scale = Vector2( 0.5, 0.5 )
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 655360, 4, 131072, 655361, 4, 131072, 655362, 4, 131072, 655363, 4, 131072, 655364, 4, 131072, 655365, 4, 131072, 655366, 4, 131072, 655367, 4, 131072, 655368, 4, 131072, 655369, 4, 131072, 655370, 4, 131072, 655371, 4, 131072, 720896, 4, 131072, 720897, 4, 131072, 720898, 4, 131072, 720899, 4, 131072, 720900, 4, 131072, 720901, 4, 131072, 720902, 4, 131072, 720903, 4, 131072, 720904, 4, 131072, 720905, 4, 131072, 720906, 4, 131072, 720907, 4, 131072, 786435, 4, 131072, 786436, 4, 131072, 786437, 4, 131072, 786438, 4, 131072, 786439, 4, 131072, 786440, 4, 131072, 786441, 4, 131072, 786442, 4, 131072, 786443, 4, 131072 )
+
+[node name="Sprite6" type="Sprite" parent="Background/content"]
+position = Vector2( 38.9672, 59.6177 )
+rotation = 1.5708
+scale = Vector2( 0.400959, 0.400959 )
+texture = ExtResource( 2 )
+offset = Vector2( 54.6356, -70.8899 )
+
+[node name="Sprite7" type="Sprite" parent="Background/content"]
+position = Vector2( -10.2227, 59.3204 )
+rotation = 1.5708
+scale = Vector2( 0.400959, 0.400959 )
+texture = ExtResource( 2 )
+offset = Vector2( 54.6356, -70.8899 )
+
+[node name="Sprite8" type="Sprite" parent="Background/content"]
+position = Vector2( 38.9672, 50.0405 )
+rotation = 1.5708
+scale = Vector2( 0.400959, 0.400959 )
+texture = ExtResource( 2 )
+offset = Vector2( 54.6356, -70.8899 )
+
+[node name="Sprite9" type="Sprite" parent="Background/content"]
+position = Vector2( -10.2227, 49.7432 )
+rotation = 1.5708
+scale = Vector2( 0.400959, 0.400959 )
+texture = ExtResource( 2 )
+offset = Vector2( 54.6356, -70.8899 )
+
+[node name="Sprite10" type="Sprite" parent="Background/content"]
+position = Vector2( 35.849, -23.4586 )
+rotation = 1.5708
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+offset = Vector2( 54.6356, -70.8899 )
+
+[node name="Sprite11" type="Sprite" parent="Background/content"]
+position = Vector2( -13.3408, -23.7559 )
+rotation = 1.5708
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+offset = Vector2( 54.6356, -70.8899 )
+
+[node name="Sprite" type="Sprite" parent="Background/content"]
+position = Vector2( 60.6496, 35.014 )
+scale = Vector2( 0.486479, 0.486479 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Background/content"]
+position = Vector2( 33.8764, 86.8759 )
+rotation = 0.380482
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
