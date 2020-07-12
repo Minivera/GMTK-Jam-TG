@@ -33,4 +33,5 @@ window/size/width=1400
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.203922, 0.12549, 0.168627, 1 )
 environment/default_environment="res://default_env.tres"
