@@ -346,7 +346,6 @@ volume_db = -10.0
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -15.0
-autoplay = true
 [connection signal="building_created" from="GameGrid" to="." method="_on_GameGrid_building_created"]
 [connection signal="room_created" from="GameGrid" to="." method="_on_GameGrid_room_created"]
 [connection signal="room_pressed" from="RoomsList" to="." method="_on_RoomsList_room_pressed"]
