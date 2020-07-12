@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/tileset/All Tiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/backgrounds/background.png" type="Texture" id=2]
 [ext_resource path="res://Rooms/BasicRoom.gd" type="Script" id=3]
+[ext_resource path="res://assets/tileset/extraRoom.tres" type="TileSet" id=4]
 
 [sub_resource type="TileSet" id=1]
 0/name = "All Tiles.png 0"
@@ -358,7 +359,7 @@ z_as_relative = false
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 96, 96 )
+region_rect = Rect2( 10, 30, 100, 80 )
 
 [node name="BaseWalls" type="TileMap" parent="Background"]
 position = Vector2( -32, -32 )
@@ -366,3 +367,9 @@ z_as_relative = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
+
+[node name="Floor" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 458754, 4, 65536, 458755, 4, 65536, 458756, 4, 65536, 458757, 4, 65536, 458758, 4, 65536, 458759, 4, 65536 )

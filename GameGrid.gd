@@ -43,6 +43,7 @@ func _ready():
 			room.connect("room_entered", self, "_on_room_entered")
 			rooms.append(room)
 			$Position2D/Camera2D.add_child(room)
+	rooms[6].is_infected = true	
 
 	$Position2D/Camera2D.set_limit(MARGIN_TOP, 0)
 	$Position2D/Camera2D.set_limit(MARGIN_BOTTOM, cell_size * rows + margin_size * rows)
