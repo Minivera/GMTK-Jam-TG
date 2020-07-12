@@ -16,6 +16,7 @@ func _input(event):
 		$GameGrid.drop()
 		globals.holding_room = null
 
+
 func _on_RoomsList_room_pressed(type):
 	$DraggablePosition.pickup(type)
 	globals.holding_room = type

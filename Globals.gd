@@ -197,8 +197,8 @@ var known_buildings = [
 				[null, "farm"]
 			],
 			[
-				["farm", "lab", "living"],
 				[null, "energy", "headquarters"],
+				["farm", "lab", "living"],
 			]
 		],
 	},

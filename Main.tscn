@@ -292,7 +292,6 @@ position = Vector2( 909.273, 24.715 )
 
 [node name="ShapeDict" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1193.11, 257.989 )
-shape = "political_center"
 
 [node name="DraggablePosition" type="Position2D" parent="."]
 visible = false
